@@ -87,7 +87,7 @@ $(function() {
     describe("Initial Entries", function(){
 
         beforeEach(function(done){
-            loadFeed(0, done());
+            loadFeed(0, done);
         });
 
         it('are in feed', function(){
@@ -113,13 +113,14 @@ $(function() {
          */
 
          beforeEach(function(done){
-            loadFeed(1, function(){
-                newFeed = $('.feed').text();
-                done();
-            });
             loadFeed(0, function(){
                 oldFeed = $('.feed').text();
+                loadFeed(1, function(){
+                    newFeed = $('.feed').text();
+                    done();
+                });
             });
+
         });
 
         it('is indeed new', function(done){
